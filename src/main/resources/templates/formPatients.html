@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{template}">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Patients</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" th:action="@{save}">
+                    <div class="mb-3">
+                        <label class="form-label" style="color:blue;">Nom</label>
+                        <input type="text" class="form-control" placeholder="Entre le nom.." th:value="${patient.name}">
+                        <span th:errors="${patient.name}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"style="color:blue;">Date de Naissance</label>
+                        <input type="date" class="form-control" th:value="${patient.dateNaissance}">
+                        <span th:errors="${patient.dateNaissance}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color:blue;">Malade</label><br>
+                        <input type="checkbox" th:checked="${patient.malade}">
+                        <span th:errors="${patient.malade}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color:blue;">Score</label>
+                        <input type="text" class="form-control" placeholder="Entre le score.." th:value="${patient.score}">
+                        <span th:errors="${patient.score}"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary"  onclick="return confirm('Le patient est bien enregistré')">
+                        Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
